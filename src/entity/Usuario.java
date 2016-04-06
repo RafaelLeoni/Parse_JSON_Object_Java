@@ -2,14 +2,19 @@ package entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Usuario {
 	
 	private String nome;
-	private List<Telefone> telefones;
 	private String login;
-	private Endereco endereco;
 	private String senha;
+	
+	private Map<String,Object> mapa;
+
+	private Endereco endereco;
+	private List<Telefone> telefones;
+	
 	
 	public Usuario() {
 	}
@@ -65,6 +70,14 @@ public class Usuario {
 			telefones = new ArrayList<>();
 		}
 		telefones.add(telefone);
+	}
+
+	public Map<String,Object> getMapa() {
+		return mapa;
+	}
+
+	public void setMapa(Map<String,Object> mapa) {
+		this.mapa = mapa;
 	}
 	
 }
