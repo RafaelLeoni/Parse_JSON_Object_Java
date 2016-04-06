@@ -50,15 +50,6 @@ public class ParseUtil {
 		return name;
 	}
 	
-	static String getObjectName(Class<?> classType) {
-		String name;
-		
-		name = classType.getName().toLowerCase();
-		name = name.replace(classType.getPackage().getName() + ".", "");
-		
-		return name;
-	}
-	
 	static Object toValueType(String value, Class<?> classType) {
 		if (classType.equals(Boolean.class)) {
 			return Boolean.valueOf(value);
