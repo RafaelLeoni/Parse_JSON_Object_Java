@@ -29,24 +29,28 @@ public class JSONParse {
 		
 		if (object != null) {
 			
-			buildJsonHeader(name);
+			if (!ParseUtil.isInstanceOfMap(object.getClass())) {
+				buildJsonHeader(name);
 			
-			if (ParseUtil.isInstanceOfCollection(object.getClass())) {
-				json.append("[");
-				Iterator<?> objectIterator = ((Collection<?>) object).iterator();
-				while (objectIterator.hasNext()) {
-					Object objectElement = objectIterator.next();
-
-					buildJsonBody(objectElement);
-
-					if (objectIterator.hasNext()) {
-						json.append(",");
+				if (ParseUtil.isInstanceOfCollection(object.getClass())) {
+					json.append("[");
+					Iterator<?> objectIterator = ((Collection<?>) object).iterator();
+					while (objectIterator.hasNext()) {
+						Object objectElement = objectIterator.next();
+	
+						buildJsonBody(objectElement);
+	
+						if (objectIterator.hasNext()) {
+							json.append(",");
+						}
 					}
-				}
-				json.append("]");
+					json.append("]");
+				} else {
+					buildJsonBody(object);
+				} 
 			} else {
-				buildJsonBody(object);
-			} 
+				json.deleteCharAt(json.lastIndexOf(","));
+			}
 		} else {
 			json.deleteCharAt(json.lastIndexOf(","));
 		}
