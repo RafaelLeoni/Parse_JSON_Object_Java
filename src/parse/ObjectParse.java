@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Collection;
+import java.util.NoSuchElementException;
 
 public class ObjectParse {
 	
@@ -57,20 +58,14 @@ public class ObjectParse {
 	}
 	
 	private String nextChar() {
-		Character c = ' ';
-		for (;cursor < json.length();) {
-			c = json.charAt(cursor);
-			cursor++;
-			return c.toString();
+		if (!hasNext()) {
+			throw new NoSuchElementException();
 		}
-		return c.toString();
+		return ((Character) json.charAt(cursor++)).toString();
 	}
 	
 	private boolean hasNext() {
-		if (cursor < json.length()) {
-			return true;
-		}
-		return false;
+		return cursor < json.length();
 	}
 	
 	private String nextParameter() {
