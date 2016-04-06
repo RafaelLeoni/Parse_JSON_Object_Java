@@ -7,9 +7,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-
-import com.sun.javafx.collections.MappingChange.Map;
 
 public class ParseUtil {
 	
@@ -28,11 +27,13 @@ public class ParseUtil {
 	    return set.contains(classType);
 	}
 	
-	static boolean isInstanceOfCollection(Class<?> classType) {
+	@SuppressWarnings("rawtypes")
+	static boolean isInstanceOfCollection(Class classType) {
 		return Collection.class.isAssignableFrom(classType);
 	}
 	
-	static boolean isInstanceOfMap(Class<?> classType) {
+	@SuppressWarnings("rawtypes")
+	static boolean isInstanceOfMap(Class classType) {
 		return Map.class.isAssignableFrom(classType);
 	}
 	
