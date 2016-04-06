@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import entity.Endereco;
@@ -12,9 +13,10 @@ public class MainJSON {
 	
 	public static void main(String[] args) {
 		Usuario usuario = new Usuario("Master", "master", "teste");
-			usuario.setEndereco(new Endereco("Centro", "Buenos Aires", 15, "5บ Andar"));
+			usuario.setEndereco(new Endereco("Centro", "Buenos Aires", 15, "5ยบ Andar"));
 			usuario.addTelefone(new Telefone("3213-9452"));
 			usuario.addTelefone(new Telefone("2271-2181"));
+			usuario.setMapa(new HashMap<>());
 			
 		List<Telefone> telefones = new ArrayList<>();
 			telefones.add(new Telefone("3213-9452"));
