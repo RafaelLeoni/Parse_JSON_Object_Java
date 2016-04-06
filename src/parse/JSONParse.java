@@ -25,7 +25,7 @@ public class JSONParse {
 		return json.toString();
 	}
 	
-	private StringBuilder buildJson(String name, Object object) throws IllegalArgumentException, IllegalAccessException {
+	private void buildJson(String name, Object object) throws IllegalArgumentException, IllegalAccessException {
 		
 		if (object != null) {
 			
@@ -50,17 +50,13 @@ public class JSONParse {
 		} else {
 			json.deleteCharAt(json.lastIndexOf(","));
 		}
-		
-		return json;
 	}
 	
-	private StringBuilder buildJsonHeader(String name) {
+	private void buildJsonHeader(String name) {
 		json.append("\"").append(name).append("\":");
-		
-		return json;
 	}
 	
-	private StringBuilder buildJsonBody(Object object) throws IllegalArgumentException, IllegalAccessException {
+	private void buildJsonBody(Object object) throws IllegalArgumentException, IllegalAccessException {
 		Class<?> classType = object.getClass();
 		
 		json.append("{");
@@ -82,8 +78,6 @@ public class JSONParse {
 			
 		}
 		json.append("}");
-		
-		return json;
 	}
 	
 }
