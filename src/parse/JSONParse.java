@@ -5,20 +5,26 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
+import exception.ParseException;
+
 public class JSONParse {
 	
-	StringBuilder json;
-	Object object;
+	private StringBuilder json;
+	private Object object;
 	
 	public JSONParse(Object object) {
 		this.object = object;
 	}
 	
-	public String toJson() throws IllegalArgumentException, IllegalAccessException {
+	public String toJson() throws ParseException {
 		json = new StringBuilder("{");
 		
 		String name = ParseUtil.getObjectName(object);
-		buildJson(name, object);
+		try {
+			buildJson(name, object);
+		} catch (IllegalArgumentException | IllegalAccessException e) {
+			throw new ParseException(e);
+		}
 		
 		json.append("}");
 		

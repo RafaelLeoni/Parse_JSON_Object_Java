@@ -2,6 +2,7 @@ package main;
 
 import entity.Telefone;
 import entity.Usuario;
+import exception.ParseException;
 import parse.ObjectParse;
 
 public class MainObject {
@@ -35,11 +36,7 @@ public class MainObject {
 					System.out.println("Senha: " + t.getUsuario().getSenha());
 				}
 			}
-		} catch (InstantiationException | IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		} catch (NoSuchFieldException e) {
+		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		
