@@ -13,8 +13,8 @@ import parse.JSONParse;
 public class MainJSON {
 	
 	public static void main(String[] args) {
-		Usuario usuario = new Usuario("Master", "master", "teste");
-			usuario.setEndereco(new Endereco("Centro", "Buenos Aires", 15, "5º Andar"));
+		Usuario usuario = new Usuario("Master", true, "teste");
+			usuario.setEndereco(new Endereco("Centro", "Buenos Aires", 15, null));
 			usuario.addTelefone(new Telefone("3213-9452"));
 			usuario.addTelefone(new Telefone("2271-2181"));
 			usuario.setMapa(new HashMap<>());
@@ -22,7 +22,7 @@ public class MainJSON {
 		List<Telefone> telefones = new ArrayList<>();
 			telefones.add(new Telefone("3213-9452"));
 			telefones.add(new Telefone("2271-2181"));
-			telefones.get(0).setUsuario(new Usuario("Master", "master", "teste"));
+			telefones.get(0).setUsuario(new Usuario("Master", false, "teste"));
 		
 		JSONParse usuarioParse = new JSONParse(usuario);
 		JSONParse telefoneParse = new JSONParse(telefones);

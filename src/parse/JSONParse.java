@@ -76,7 +76,10 @@ public class JSONParse {
 			Field field = fields.next();
 			
 			field.setAccessible(true);
-			if (field.getType().isPrimitive() || ParseUtil.isWrapper(field.getType())) {
+			if ((field.getType().isPrimitive() && field.getType() != char.class) 
+					|| ParseUtil.isNumberOrBoolean(field.getType()) || field.get(object) == null) {
+				json.append("\"").append(field.getName()).append("\":").append(field.get(object));
+			} else if (ParseUtil.isString(field.getType()) || field.getType() == char.class) {
 				json.append("\"").append(field.getName()).append("\":\"").append(field.get(object)).append("\"");
 			} else {
 				buildJson(field.getName(), field.get(object));

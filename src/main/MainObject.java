@@ -10,13 +10,13 @@ public class MainObject {
 	public static void main(String[] args) {
 		
 		String json = "{\"usuario\": {\"nome\":\"Master\",\"telefones\":[{\"numero\":\"3213-9452\"},"
-				+ "{\"numero\":\"2271-2181\",\"usuario\":{\"nome\":\"Rafael\"\"login\":\"rafael\",\"senha\":\"12345\"}}],"
-				+ "\"login\":\"master\",\"endereco\":{\"bairro\":\"Centro\","
-				+ "\"rua\":\"Buenos Aires\",\"numero\":\"15\",\"complemento\":\"5º Andar\"},\"senha\":\"teste\"}}";
+				+ "{\"numero\":\"2271-2181\",\"usuario\":{\"nome\":\"Rafael\"\"login\":true,\"senha\":\"12345\"}}],"
+				+ "\"login\":false,\"endereco\":{\"bairro\":\"Centro\","
+				+ "\"rua\":null,\"numero\":15,\"complemento\":\"5º Andar\"},\"senha\":\"teste\"}}";
 		
 		ObjectParse usuarioParse = new ObjectParse(json);
 		try {
-			Usuario usuario = (Usuario) usuarioParse.toObject(Usuario.class);
+			Usuario usuario = usuarioParse.toObject(Usuario.class);
 			System.out.println("-- Dados --");
 			System.out.println("Nome: " + usuario.getNome());
 			System.out.println("Login: " + usuario.getLogin());

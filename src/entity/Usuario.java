@@ -7,7 +7,7 @@ import java.util.Map;
 public class Usuario {
 	
 	private String nome;
-	private String login;
+	private boolean login;
 	private String senha;
 	
 	private Map<String,Object> mapa;
@@ -19,7 +19,7 @@ public class Usuario {
 	public Usuario() {
 	}
 
-	public Usuario(String nome, String login, String senha) {
+	public Usuario(String nome, boolean login, String senha) {
 		super();
 		this.nome = nome;
 		this.login = login;
@@ -34,11 +34,11 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getLogin() {
+	public boolean getLogin() {
 		return login;
 	}
 
-	public void setLogin(String login) {
+	public void setLogin(boolean login) {
 		this.login = login;
 	}
 

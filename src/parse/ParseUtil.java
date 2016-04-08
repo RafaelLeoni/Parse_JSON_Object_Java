@@ -12,18 +12,22 @@ import java.util.Set;
 
 public class ParseUtil {
 	
-	static boolean isWrapper(Class<?> classType) {
+	static boolean isString(Class<?> classType) {
 		Set<Class<?>> set = new HashSet<Class<?>>();
-	        set.add(Boolean.class);
 	        set.add(Character.class);
 	        set.add(String.class);
-	        set.add(Byte.class);
+	    return set.contains(classType);
+	}
+	
+	static boolean isNumberOrBoolean(Class<?> classType) {
+		Set<Class<?>> set = new HashSet<Class<?>>();
+			set.add(Boolean.class);
+			set.add(Byte.class);
 	        set.add(Short.class);
 	        set.add(Integer.class);
 	        set.add(Long.class);
 	        set.add(Float.class);
 	        set.add(Double.class);
-	        set.add(Void.class);
 	    return set.contains(classType);
 	}
 	

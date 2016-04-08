@@ -19,7 +19,7 @@ public class ObjectParse {
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public Object toObject(Class<?> classType) throws ParseException {
+	public <E> E toObject(Class<E> classType) throws ParseException {
 		
 		try {
 			Object object = classType.newInstance();
@@ -32,7 +32,7 @@ public class ObjectParse {
 			while (hasNext()) {
 				nextParameter = nextParameter();
 				
-				if (nextParameter.matches("[a-zA-Z0-9 ]+")) {
+				if (nextParameter.matches("[a-zA-Z0-9]+")) {
 					if (ParseUtil.isClassField(nextParameter, classType)) {
 						field = classType.getDeclaredField(nextParameter);
 					}
@@ -42,6 +42,12 @@ public class ObjectParse {
 						nextParameter = nextParameter();
 						if (nextParameter.equals("\"")) {
 							field.set(object, ParseUtil.toValueType(nextParameter(), field.getType()));
+						} else if (nextParameter.matches("[0-9]+")) {
+							field.set(object, ParseUtil.toValueType(nextParameter, field.getType()));
+						} else if (nextParameter.equals("null")) {
+							field.set(object, null);
+						} else if (nextParameter.equals("true") || nextParameter.equals("false")) {
+							field.set(object, nextParameter.equals("true"));
 						} else if (nextParameter.equals("{")) {
 							field.set(object, toObject(field.getType()));
 						} else if (nextParameter.equals("[")) {
@@ -49,15 +55,15 @@ public class ObjectParse {
 							type = ((ParameterizedType) field.getGenericType()).getActualTypeArguments()[0];
 						}
 					} else if (nextParameter.equals("{")) {
-						collection.add(toObject((Class<?>) type));
+						collection.add(toObject((Class<E>) type));
 					} else if (nextParameter.equals("}")) {
-						return object;
+						return (E) object;
 					} else if (nextParameter.equals("]")) {
 						field.set(object, collection);
 					}
 				}
 			} 
-			return object;
+			return (E) object;
 		} catch (InstantiationException | IllegalAccessException e) {
 			throw new ParseException(e);
 		} catch (NoSuchFieldException | SecurityException e) {
