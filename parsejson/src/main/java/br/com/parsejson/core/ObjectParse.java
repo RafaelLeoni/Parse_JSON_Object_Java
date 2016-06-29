@@ -1,4 +1,4 @@
-package parse;
+package br.com.parsejson.core;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
@@ -6,7 +6,8 @@ import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.NoSuchElementException;
 
-import exception.ParseException;
+import br.com.parsejson.exception.ParseException;
+import br.com.parsejson.util.ParseUtil;
 
 public class ObjectParse {
 	

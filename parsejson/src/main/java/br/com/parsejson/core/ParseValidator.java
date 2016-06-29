@@ -1,9 +1,9 @@
-package parse;
+package br.com.parsejson.core;
 
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 
-import exception.ParseException;
+import br.com.parsejson.exception.ParseException;
 
 public class ParseValidator {
 	

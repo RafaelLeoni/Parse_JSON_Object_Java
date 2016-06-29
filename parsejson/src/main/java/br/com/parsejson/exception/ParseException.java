@@ -1,4 +1,4 @@
-package exception;
+package br.com.parsejson.exception;
 
 public class ParseException extends Exception {
 	
