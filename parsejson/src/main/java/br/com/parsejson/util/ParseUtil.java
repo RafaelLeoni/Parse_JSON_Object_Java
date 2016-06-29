@@ -1,4 +1,4 @@
-package parse;
+package br.com.parsejson.util;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -12,14 +12,14 @@ import java.util.Set;
 
 public class ParseUtil {
 	
-	static boolean isString(Class<?> classType) {
+	public static boolean isString(Class<?> classType) {
 		Set<Class<?>> set = new HashSet<Class<?>>();
 	        set.add(Character.class);
 	        set.add(String.class);
 	    return set.contains(classType);
 	}
 	
-	static boolean isNumberOrBoolean(Class<?> classType) {
+	public static boolean isNumberOrBoolean(Class<?> classType) {
 		Set<Class<?>> set = new HashSet<Class<?>>();
 			set.add(Boolean.class);
 			set.add(Byte.class);
@@ -32,16 +32,16 @@ public class ParseUtil {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	static boolean isInstanceOfCollection(Class classType) {
+	public static boolean isInstanceOfCollection(Class classType) {
 		return Collection.class.isAssignableFrom(classType);
 	}
 	
 	@SuppressWarnings("rawtypes")
-	static boolean isInstanceOfMap(Class classType) {
+	public static boolean isInstanceOfMap(Class classType) {
 		return Map.class.isAssignableFrom(classType);
 	}
 	
-	static String getObjectName(Object object) {
+	public static String getObjectName(Object object) {
 		String name;
 		if (isInstanceOfCollection(object.getClass())) {
 			Iterator<?> objectIterator = ((Collection<?>) object).iterator();
@@ -55,7 +55,7 @@ public class ParseUtil {
 		return name;
 	}
 	
-	static Object toValueType(String value, Class<?> classType) {
+	public static Object toValueType(String value, Class<?> classType) {
 		if (classType.equals(Boolean.class)) {
 			return Boolean.valueOf(value);
 		} else if (classType.equals(String.class)) {
@@ -76,7 +76,7 @@ public class ParseUtil {
 		return null;
 	}
 	
-	static boolean isClassField(String name, Class<?> classType) {
+	public static boolean isClassField(String name, Class<?> classType) {
 
 		List<String> allFields = new ArrayList<String>(); 
 		
@@ -91,7 +91,7 @@ public class ParseUtil {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	static Collection getCollectionInstance(Field field) {
+	public static Collection getCollectionInstance(Field field) {
 		Collection collection = null;
 		if (field.getType().equals(List.class)) {
 			collection = new ArrayList();
