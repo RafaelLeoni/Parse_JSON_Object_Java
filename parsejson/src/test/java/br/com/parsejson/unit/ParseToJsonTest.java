@@ -32,11 +32,11 @@ public class ParseToJsonTest {
 	
 	
 	@Test
-	public void dadoUmaEntidadeBatamanDeveMeRetornarUmJsonDeBatman() throws ParseException{
+	public void dadoUmaEntidadeBatmanDeveMeRetornarUmJsonDeBatman() throws ParseException{
 	
 		JSONParse parse = new JSONParse(batman);
 		String json = parse.toJson();
-		Assert.assertEquals("String deve conter 'Bataman':{ ", json.contains("\"bataman\":{"));
+		Assert.assertEquals("String deve conter 'batman':{ ", json.contains("\"batman\":{"));
 	}
 	
 	@After
