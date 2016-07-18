@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.parse.core.exception.ParseException;
-import br.com.parse.core.parser.ParseJson;
+import br.com.parse.core.parser.Parser;
 import br.com.parse.entity.Endereco;
 import br.com.parse.entity.Telefone;
 import br.com.parse.entity.Usuario;
@@ -22,8 +22,8 @@ public class TestToJson {
 		usuario.setTelefones(telefones);
 		
 		try {
-			System.out.println(new ParseJson().toJson(usuario));
-			System.out.println(new ParseJson().toJson(telefones));
+			System.out.println(new Parser().toJson(usuario));
+			System.out.println(new Parser().toJson(telefones));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

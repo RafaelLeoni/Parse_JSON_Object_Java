@@ -1,6 +1,6 @@
 package br.com.parse.test;
 
-import br.com.parse.core.parser.ParseObject;
+import br.com.parse.core.parser.Parser;
 import br.com.parse.entity.Usuario;
 
 public class TestToObject {
@@ -21,10 +21,9 @@ public class TestToObject {
 						+ "\"ativo\": true, "
 						+ "\"idade\": 15"
 					+ "}";
-		ParseObject parser = new ParseObject();
-		
-		Usuario u = parser.toObject(json, Usuario.class);
-		System.out.println(u.toString());
+		Parser parserToObject = new Parser();
+		Usuario userParser = parserToObject.toObject(json).in(Usuario.class);
+		System.out.println(userParser.toString());
 	
 	}
 	
